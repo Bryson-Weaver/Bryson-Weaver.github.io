@@ -1,0 +1,62 @@
+/* Background and font */
+body {
+    background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+    font-family: 'Arial', Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+/* Header styles */
+header {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    padding: 25px;
+    background-color: #1565c0;
+    color: #ffffff;
+}
+/* Navigation styles */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: center; /* Center the navigation items */
+    background-color: #1976d2;
+}
+nav ul li {
+    margin: 0 15px; /* Add space between items */
+}
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding 10px 15px;
+    display: block
+    transition: background-color 0.3s;
+}
+nav ul li a:hover { /* add hover effect */
+    background-color: #0d47a1; /* Darker shade on hover */
+    color: #ffffff;
+}
+/* Main sections */
+main section {
+    padding: 30px auto;
+    margin: 20px;
+    max-width: 800px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+}
+main section h2 {
+    color: #1565c0;
+}
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    background-color: #263238;
+    color: #ffffff;
+    position-top: 40px;
+}
