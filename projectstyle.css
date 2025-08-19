@@ -1,62 +1,86 @@
-/* Background and font */
 body {
-    background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
-    font-family: 'Arial', Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
-/* Header styles */
+ 
 header {
-    text-align: center;
-    font-size: 1.8em;
-    font-weight: bold;
-    padding: 25px;
-    background-color: #1565c0;
-    color: #ffffff;
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  padding: 25px;
+  background-color: #1565c0;
+  color: white;
 }
-/* Navigation styles */
+ 
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex; /* Use flexbox for horizontal layout */
-    justify-content: center; /* Center the navigation items */
-    background-color: #1976d2;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #1976d2;
 }
+ 
 nav ul li {
-    margin: 0 15px; /* Add space between items */
+  margin: 0 15px;
 }
+ 
 nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    padding 10px 15px;
-    display: block
-    transition: background-color 0.3s;
+  text-decoration: none;
+  color: white;
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s ease;
 }
-nav ul li a:hover { /* add hover effect */
-    background-color: #0d47a1; /* Darker shade on hover */
-    color: #ffffff;
+ 
+nav ul li a:hover {
+  background-color: #0d47a1;
 }
-/* Main sections */
+ 
 main section {
-    padding: 30px auto;
-    margin: 20px;
-    max-width: 800px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
-main section h2 {
-    color: #1565c0;
+ 
+main section:hover {
+  transform: scale(1.02);
 }
-/* Footer styles */
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+ 
+th, td {
+  border: 1px solid #999;
+  padding: 12px;
+  text-align: center;
+}
+ 
+thead {
+  background-color: #1565c0;
+  color: white;
+}
+ 
+tfoot {
+  background-color: #eeeeee;
+}
+ 
 footer {
-    text-align: center;
-    padding: 15px;
-    font-size: 0.9em;
-    background-color: #263238;
-    color: #ffffff;
-    position-top: 40px;
+  font-size: 0.9em;
+  text-align: center;
+  padding: 15px;
+  background-color: #263238;
+  color: white;
+  margin-top: 40px;
 }
