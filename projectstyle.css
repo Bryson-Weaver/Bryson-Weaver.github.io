@@ -14,7 +14,26 @@ header {
   background-color: #1565c0;
   color: white;
 }
- 
+.nav-flex {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  background-color: #1976d2;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+
+}
+.nav-flex li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+}
+.nav-flex li a:hover {
+  background-color: #0d47a1;
+}
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -39,8 +58,14 @@ nav ul li a {
 nav ul li a:hover {
   background-color: #0d47a1;
 }
- 
+.main-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
 main section {
+  width: 45%;
   margin: 30px auto;
   padding: 20px;
   max-width: 800px;
@@ -75,7 +100,36 @@ thead {
 tfoot {
   background-color: #eeeeee;
 }
- 
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+input:focus,
+textarea:focus {
+  border-color: #1565c0;
+}
+input [type="submit"] {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;               
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+input[type="submit"]:hover {
+  background-color: #0d47a1;
+}
 footer {
   font-size: 0.9em;
   text-align: center;
@@ -83,4 +137,21 @@ footer {
   background-color: #263238;
   color: white;
   margin-top: 40px;
+}
+@media screen and (max-width: 600px) {
+  .main-flex {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  .main-flex {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .main-flex {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
