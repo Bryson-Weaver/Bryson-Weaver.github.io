@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Guided Practice 5.10</title>
+        <style>
+            body {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(to bottom, #87ceeb, #f0f8ff);
+            }
+            .ball {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: radial-gradient(circle, #ff6f61, #ff3d00);
+                position: relative;
+                animation: bounce 2s infinite ease-in-out, colorchange 6s infinite linear;
+            }
+            @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+            
+                transform: translateY(-200px);
+            }
+            }
+            @keyframes colorchange {
+                0% {background: radial-gradient(circle, #ff6f61, #ff3d00);}
+                25%{background: radial-gradient(circle, #ffd700, #ffa500);}
+                50%{background: radial-gradient(circle, #32cd32, #008000);}
+                75%{background: radial-gradient(circle, #1e90ff, #0000cd);}
+                100% {background: radial-gradient(circle, #ff6f61, #ff3d00);}
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ball">
+
+        </div>
+    </body>
+</html>
