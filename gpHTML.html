@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Guided Practice 5.14</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background: #f9f9f9;
+                text-align: center;
+                padding: 40px;
+            }
+            h1 {
+                margin-bottom: 30px;
+            }
+            .collage {
+                position: relative;
+                width: 500px;
+                height: 300px;
+                margin: 0 auto;
+                border: 2px dashed #ccc;
+            }
+            .collage img {
+                width: 200px;
+                height: 150px;
+                object-fit: cover;
+                position: absolute;
+                top: 50px;
+                left: 150px;
+                border: 4px solid #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+                transition: transform 0.3 ease z-index 0.2 ease;
+            }
+            #img1{
+                transform: rotate(-10deg);
+                z-index: 1;
+                left: 60px;
+            }
+            #img2{
+                transform: rotate(5deg);
+                z-index: 2;
+                left: 170px;
+            }
+            #img3{
+                transform: rotate(15deg);
+                z-index: 0;
+                left: 280px;
+            }
+            #img1:hover,
+            #img2:hover,
+            #img3:hover {
+                transform: rotate(0deg) scale(1.3);
+                z-index: 3;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Z-Index and Rotation Collage</h1>
+        <div class="collage">
+            <img id="img1"
+                    src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=200&h=150&fit=crop"
+                    alt="Nature">
+            <img id="img2"
+                    src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=200&h=150&fit=crop"
+                    alt="Laptop">
+            <img id="img3"|
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=200&h=150&fit=crop"
+                    alt="Coffee">
+        </div>
+    </body>
+</html>
