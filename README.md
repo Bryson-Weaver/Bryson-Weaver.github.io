@@ -68,3 +68,6 @@ If you'd like to contribute:
 ## License
 
 This project is licensed under the MIT License. You’re free to use, modify, and share it.
+
+This is a picture of my Homepage hosted by XAMPP
+![Homepage Screenshot](/Users/bryson/Documents/MyGitHubRepos/Bryson-Weaver.github.io/images/Screenshot 2025-08-28 at 2.39.38 PM.png)
