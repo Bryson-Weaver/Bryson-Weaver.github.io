@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="Welcome to my page, 
+I don't have anything to say here"/>
+<meta name="keywords" content="Portfolio, Contacts, Homepage, HTML Examples" />
+<meta name="author" content="Bryson Weaver"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="styles.css" />
+<title>My Homepage</title>
+</head>
+<body>
+    <header>
+        <h1 id="page-header"></h1>
+    </header>
+    <!-- Navigation Menu that uses a bullet list -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello, I am a passionate web developer learning HTML, JavaScript, and CSS.
+               Building websites is cool!         
+            </p>
+        </section>
+        <section id="projects">
+
+            <div class="table-container">
+                <table style="border: 1px solid #000;">
+                    <colgroup>
+                        <col style="background-color: #f0f8ff;">
+                        <col>
+                        <col style="background-color: #f0f8ff; border: 1px solid #000; border-collapse: collapse;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Portfolio Website</td>
+                            <td>A personal portfolio to showcase my work.</td>
+                            <td><img src="https://placehold.co/600x200" alt="Placeholder Image" /></td>
+                        </tr>
+                        <tr>
+                            <td>Game Tracker</td>
+                            <td>A web app to track my loses in a videogame</td>
+                            <td><img src="https://placehold.co/600x400" alt="Placeholder Image" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="contact">
+            <div id="contact-container">
+                <h2>Contact Me</h2>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required />
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" />
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+                <script>
+                   var name = prompt("Please enter your name:");
+                   document.getElementById("page-header").textContent = "Welcome to My Homepage, " + name + "!";
+                </script>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; &nbsp; 2023 Bryson Weaver; All rights reserved</p>
+    </footer>
+</body>
+</html>
