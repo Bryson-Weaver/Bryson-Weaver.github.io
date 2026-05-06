@@ -50,16 +50,11 @@ document.addEventListener(
     ];
     const skillsListEl = document.getElementById("skills-list");
     if (skillsListEl) {
-      const ul = document.createElement("ul");
-      ul.className = "skills-bullets";
-
       for (let i = 0; i < skills.length; i++) {
         const li = document.createElement("li");
         li.textContent = skills[i];
-        ul.appendChild(li);
+        skillsListEl.appendChild(li);
       }
-
-      skillsListEl.appendChild(ul);
     }
 
     /**
@@ -121,27 +116,20 @@ document.addEventListener(
      * Contact form timed confirmation
      * ============================================
      *
-     * Intercepts the form submission so the page doesn’t refresh, shows a temporary
-     * “Sending message...” status element, then replaces it with a success message
-     * after a short delay.
+     * Adds interactivity to the submit button:
+     * - Prevents the form from refreshing the page
+     * - Uses the visitor's name input to display a confirmation via `alert()`
      */
-    const contactForm = document.querySelector("#contact form");
-    if (contactForm) {
-      contactForm.addEventListener("submit", (event) => {
+    const submitBtn = document.getElementById("contact-submit");
+    if (submitBtn) {
+      submitBtn.addEventListener("click", (event) => {
         event.preventDefault();
 
-        let status = contactForm.querySelector(".form-status");
-        if (!status) {
-          status = document.createElement("div");
-          status.className = "form-status";
-          contactForm.appendChild(status);
-        }
+        const nameField = document.getElementById("name");
+        const rawName = nameField instanceof HTMLInputElement ? nameField.value : "";
+        const displayName = rawName.trim() !== "" ? rawName.trim() : "friend";
 
-        status.textContent = "Sending message...";
-
-        window.setTimeout(() => {
-          status.textContent = "Message sent successfully!";
-        }, 2500);
+        alert(`Thank you, ${displayName}, your message has been sent!`);
       });
     }
   },
