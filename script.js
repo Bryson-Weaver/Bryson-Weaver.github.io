@@ -1,110 +1,129 @@
 /**
  * ============================================
- * Minimal DOM demo
+ * Portfolio page interactions
  * ============================================
  *
- * This file demonstrates a few common DOM tasks:
- * - Dynamically adding an element to the page (createElement + appendChild)
- * - Selecting and modifying existing elements (querySelector + getElementById)
- * - Intercepting a form submit (preventDefault) and showing a timed confirmation
+ * This file contains all JavaScript for the page (kept out of `index.html` so it’s
+ * easier to read and maintain).
  *
- * Because `index.html` loads this script with `defer`, the DOM is already parsed.
- * We still use `DOMContentLoaded` to keep the behavior safe if the script tag changes later.
+ * The script is loaded with `defer`, so the HTML is parsed before this runs.
+ * We still use `DOMContentLoaded` so the code stays safe even if the script tag
+ * is moved later.
  */
 document.addEventListener(
   "DOMContentLoaded",
   () => {
     /**
      * ============================================
-     * Dark mode toggle (slider)
+     * Header greeting (prompt for visitor name)
      * ============================================
      *
-     * This block wires up the checkbox at the top of the page so it can switch
-     * between the default theme and the dark theme.
-     *
-     * How it works:
-     * - The CSS defines dark theme variables under `body.dark-mode { ... }`
-     * - When the checkbox is checked, we add the `dark-mode` class to `<body>`
-     * - We store the choice in `localStorage` so it persists after refresh
+     * We ask the visitor for their name and update the page header with a welcome message.
+     * If the visitor cancels the prompt or enters only whitespace, we fall back to "Guest".
      */
-    const darkModeToggle = document.getElementById("dark-mode-toggle");
-    const storageKey = "preferredTheme";
+    const headerEl = document.getElementById("page-header");
+    if (headerEl) {
+      const visitorName = window.prompt("Please enter your name:");
+      const safeName =
+        typeof visitorName === "string" && visitorName.trim() !== ""
+          ? visitorName.trim()
+          : "Guest";
+      headerEl.textContent = `Welcome to My Homepage, ${safeName}!`;
+    }
 
-    if (darkModeToggle instanceof HTMLInputElement) {
-      const savedTheme = localStorage.getItem(storageKey);
+    /**
+     * ============================================
+     * Skills list (dynamic DOM creation)
+     * ============================================
+     *
+     * Builds a bullet list of skills entirely in JavaScript and inserts it into the
+     * "About" section. This demonstrates DOM creation with `createElement()` and
+     * DOM insertion with `appendChild()`.
+     */
+    const skills = [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Git",
+      "GitHub",
+      "Responsive Design",
+    ];
+    const skillsListEl = document.getElementById("skills-list");
+    if (skillsListEl) {
+      const ul = document.createElement("ul");
+      ul.className = "skills-bullets";
+
+      for (let i = 0; i < skills.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = skills[i];
+        ul.appendChild(li);
+      }
+
+      skillsListEl.appendChild(ul);
+    }
+
+    /**
+     * ============================================
+     * Featured panels visibility (content-based UI)
+     * ============================================
+     *
+     * We count how many project rows exist in the projects table and show/hide featured
+     * panels based on that count.
+     */
+    const projectRows = document.querySelectorAll("#projects tbody tr");
+    const projectCount = projectRows.length;
+    const universityPanel = document.getElementById("university-resources");
+    const personalPanel = document.getElementById("personal-projects-featured");
+
+    if (universityPanel && personalPanel) {
+      if (projectCount < 3) {
+        universityPanel.classList.add("featured-visible");
+        universityPanel.classList.remove("featured-hidden");
+        personalPanel.classList.add("featured-visible");
+        personalPanel.classList.remove("featured-hidden");
+      } else {
+        universityPanel.classList.add("featured-hidden");
+        universityPanel.classList.remove("featured-visible");
+        personalPanel.classList.add("featured-visible");
+        personalPanel.classList.remove("featured-hidden");
+      }
+    }
+
+    /**
+     * ============================================
+     * Dark mode slider
+     * ============================================
+     *
+     * Toggles the `dark-mode` class on `<body>` when the checkbox is changed.
+     * We also store the preference in `localStorage` so it survives page refresh.
+     */
+    const darkToggle = document.getElementById("dark-mode-toggle");
+    const themeStorageKey = "preferredTheme";
+
+    if (darkToggle instanceof HTMLInputElement) {
+      const savedTheme = localStorage.getItem(themeStorageKey);
       const shouldUseDark = savedTheme === "dark";
 
       document.body.classList.toggle("dark-mode", shouldUseDark);
-      darkModeToggle.checked = shouldUseDark;
+      darkToggle.checked = shouldUseDark;
+      darkToggle.setAttribute("aria-checked", shouldUseDark ? "true" : "false");
 
-      darkModeToggle.addEventListener("change", () => {
-        const isDark = darkModeToggle.checked;
+      darkToggle.addEventListener("change", () => {
+        const isDark = darkToggle.checked;
         document.body.classList.toggle("dark-mode", isDark);
-        localStorage.setItem(storageKey, isDark ? "dark" : "light");
+        darkToggle.setAttribute("aria-checked", isDark ? "true" : "false");
+        localStorage.setItem(themeStorageKey, isDark ? "dark" : "light");
       });
     }
 
     /**
      * ============================================
-     * Page header greeting
+     * Contact form timed confirmation
      * ============================================
      *
-     * Prompts the visitor for a name and updates the `<h1 id="page-header">`
-     * with a personalized greeting. If the user cancels or submits a blank name,
-     * we fall back to a generic welcome message.
-     */
-    const headerEl = document.getElementById("page-header");
-    if (headerEl) {
-      const name = window.prompt("Please enter your name:");
-      const trimmed = typeof name === "string" ? name.trim() : "";
-      headerEl.textContent =
-        trimmed.length > 0
-          ? `Welcome to My Homepage, ${trimmed}!`
-          : "Welcome to My Homepage!";
-    }
-
-    /**
-     * ============================================
-     * 1) Dynamically add a new paragraph to Projects
-     * ============================================
-     *
-     * Creates a new `<p>` element in JavaScript and appends it to the `#projects` section.
-     */
-    const projectsSection = document.getElementById("projects");
-    if (projectsSection) {
-      const p = document.createElement("p");
-      p.textContent =
-        "Recent project: I'm building a small game tracker to record wins/losses and improve over time.";
-      projectsSection.appendChild(p);
-    }
-
-    /**
-     * ============================================
-     * 2) Select + modify at least two existing elements
-     * ============================================
-     *
-     * We select two elements that already exist in the HTML and modify them:
-     * - Change the About heading text (content change) using `querySelector()`
-     * - Change the Projects section styling (style change) using `getElementById()`
-     */
-    const aboutHeading = document.querySelector("#about h2");
-    if (aboutHeading) {
-      aboutHeading.textContent = "About Me (updated with JavaScript)";
-    }
-
-    if (projectsSection) {
-      projectsSection.style.border = "2px solid #7502a7";
-    }
-
-    /**
-     * ============================================
-     * 3) Timed confirmation for contact form submission
-     * ============================================
-     *
-     * When the user clicks “Send Message”:
-     * - Stop the normal form submission (preventDefault)
-     * - Add/show a "Sending message..." element dynamically
-     * - After ~2.5 seconds, replace it with "Message sent successfully!"
+     * Intercepts the form submission so the page doesn’t refresh, shows a temporary
+     * “Sending message...” status element, then replaces it with a success message
+     * after a short delay.
      */
     const contactForm = document.querySelector("#contact form");
     if (contactForm) {

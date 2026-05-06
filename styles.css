@@ -7,7 +7,7 @@
     /* Brand & surfaces */
     --color-accent: #8b2fc9;
     --color-accent-soft: rgba(139, 47, 201, 0.12);
-    --color-accent-strong: #6a1fa3;
+    --color-accent-strong: hsl(274, 82%, 54%);
     --color-surface: #ffffff;
     --color-surface-elevated: #fbf8ff;
     --color-surface-muted: #f4f0fa;
@@ -57,14 +57,14 @@ body.dark-mode {
     --color-accent-strong: #e1bee7;
     --color-surface: #1c1c24;
     --color-surface-elevated: #232330;
-    --color-surface-muted: #1a1a22;
+    --color-surface-muted: hsl(240, 4%, 18%);
     --color-page-top: #121218;
     --color-page-bottom: #0e0e14;
 
     --color-text: #eceaf0;
     --color-text-muted: #a8a2b3;
     --color-border: rgba(255, 255, 255, 0.08);
-    --color-border-strong: rgba(199, 146, 234, 0.45);
+    --color-border-strong: #2d2b2e73;
 
     --color-header: linear-gradient(135deg, #1a1a2e 0%, #252540 50%, #2d2d48 100%);
     --color-nav: linear-gradient(90deg, #16162a 0%, #1e1e36 100%);
@@ -324,6 +324,24 @@ body.dark-mode .featured-panel.featured-visible a {
     color: #9cdcfe;
 }
 
+/* =============================================================================
+   Dark mode: prevent light-tinted table fills
+   ============================================================================= */
+
+body.dark-mode .projects-table thead {
+    background: var(--color-surface-muted);
+}
+
+body.dark-mode .projects-table tbody tr:nth-child(odd) td:nth-child(odd),
+body.dark-mode .projects-table tbody tr:nth-child(even) td:nth-child(odd) {
+    background: var(--color-surface-muted);
+}
+
+body.dark-mode .projects-table tbody tr:nth-child(odd) td:nth-child(3),
+body.dark-mode .projects-table tbody tr:nth-child(even) td:nth-child(3) {
+    background: var(--color-surface-elevated);
+}
+
 .featured-image-links {
     display: flex;
     flex-wrap: wrap;
@@ -492,6 +510,25 @@ form button[type="submit"]:focus-visible {
 
 form button[type="submit"]:active {
     transform: translateY(0);
+}
+
+/* =============================================================================
+   Small dynamic UI elements (inserted by JavaScript)
+   ============================================================================= */
+
+.notification-banner {
+    width: min(100% - 2rem, 52rem);
+    margin: 16px auto 0;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-elevated);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-status {
+    margin-top: var(--space-sm);
+    font-weight: 700;
+    color: var(--color-text-muted);
 }
 
 /* =============================================================================
