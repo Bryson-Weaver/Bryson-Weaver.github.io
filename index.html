@@ -12,6 +12,22 @@ I don't have anything to say here"/>
 <title>My Homepage</title>
 </head>
 <body>
+    <div
+        id="welcome-modal"
+        class="welcome-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="welcome-modal-title"
+    >
+        <div class="welcome-modal__backdrop" aria-hidden="true"></div>
+        <div class="welcome-modal__panel">
+            <h2 id="welcome-modal-title">Hello!</h2>
+            <p>This page is a work in progress.</p>
+            <button type="button" id="welcome-modal-close" class="welcome-modal__close">
+                Close
+            </button>
+        </div>
+    </div>
     <div class="theme-toggle-bar">
         <label class="dark-mode-label" for="dark-mode-toggle">Dark mode</label>
         <input id="dark-mode-toggle" class="dark-mode-checkbox" type="checkbox" />
@@ -98,7 +114,12 @@ I don't have anything to say here"/>
                     <input type="text" id="subject" name="subject" />
                     <label for="message">Message:</label>
                     <textarea id="message" name="message" required></textarea>
-                    <button type="submit">Send Message</button>
+                    <span
+                        class="submit-tooltip-wrap"
+                        data-tooltip="Click to send your message!"
+                    >
+                        <button type="submit" id="contact-submit">Send Message</button>
+                    </span>
                 </form>
             </div>
         </section>
