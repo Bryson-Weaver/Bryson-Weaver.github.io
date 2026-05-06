@@ -8,9 +8,14 @@ I don't have anything to say here"/>
 <meta name="author" content="Bryson Weaver"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="styles.css" />
+<script src="script.js" defer></script>
 <title>My Homepage</title>
 </head>
 <body>
+    <div class="theme-toggle-bar">
+        <label class="dark-mode-label" for="dark-mode-toggle">Dark mode</label>
+        <input id="dark-mode-toggle" class="dark-mode-checkbox" type="checkbox" />
+    </div>
     <header>
         <h1 id="page-header"></h1>
     </header>
@@ -32,11 +37,9 @@ I don't have anything to say here"/>
         <section id="projects">
 
             <div class="table-container">
-                <table style="border: 1px solid #000;">
+                <table class="projects-table">
                     <colgroup>
-                        <col style="background-color: #f0f8ff;">
-                        <col>
-                        <col style="background-color: #f0f8ff; border: 1px solid #000; border-collapse: collapse;">
+                        
                     </colgroup>
                     <thead>
                         <tr>
@@ -74,10 +77,6 @@ I don't have anything to say here"/>
                     <textarea id="message" name="message" required></textarea>
                     <button type="submit">Send Message</button>
                 </form>
-                <script>
-                   var name = prompt("Please enter your name:");
-                   document.getElementById("page-header").textContent = "Welcome to My Homepage, " + name + "!";
-                </script>
             </div>
         </section>
     </main>
