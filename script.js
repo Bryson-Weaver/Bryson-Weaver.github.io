@@ -95,11 +95,62 @@ document.addEventListener(
       }
     }
 
+    const projects = [
+      {
+        title: "Bank Account Project",
+        summary: "A simple bank account management system implemented in Java.",
+        image: "https://placehold.co/600x400",
+        link: "https://github.com/Bryson-Weaver/Bank-Account-Project",
+      },
+      {
+        title: "Department Store Inventory System",
+        summary: "A PHP-based inventory management system for a One Piece Themed store.",
+        image: "https://placehold.co/600x400",
+        link: "https://github.com/Bryson-Weaver/PHP-Dept-Store-Project",
+      },
+      {
+        title: "Pandas and Charting Project",
+        summary: "A data analysis and visualization project using Python's Pandas library.",
+        image: "https://placehold.co/600x400",
+        link: "https://github.com/Bryson-Weaver/Advanced-Pandas-and-Charting",
+      },
+    ];
+
+    const projectsSection = document.querySelector("#projects");
+    const projectList = projectsSection
+      ? projectsSection.querySelector("#project-list")
+      : null;
+    if (projectList) {
+      for (let i = 0; i < projects.length; i++) {
+        const project = projects[i];
+        const row = document.createElement("tr");
+        const titleCell = document.createElement("td");
+        const summaryCell = document.createElement("td");
+        const imageCell = document.createElement("td");
+        const linkCell = document.createElement("td");
+        const image = document.createElement("img");
+        const link = document.createElement("a");
+
+        titleCell.textContent = project.title;
+        summaryCell.textContent = project.summary;
+        image.src = project.image;
+        image.alt = project.title;
+        link.href = project.link;
+        link.textContent = "View Project";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        imageCell.appendChild(image);
+        linkCell.appendChild(link);
+        row.append(titleCell, summaryCell, imageCell, linkCell);
+        projectList.appendChild(row);
+      }
+    }
+
     /**
      * Featured panels visibility from project count.
      */
-    const projectRows = document.querySelectorAll("#projects tbody tr");
-    const projectCount = projectRows.length;
+    const projectCount = projects.length;
     const universityPanel = document.getElementById("university-resources");
     const personalPanel = document.getElementById("personal-projects-featured");
 
@@ -132,6 +183,7 @@ document.addEventListener(
         alert(`Thank you, ${displayName}, your message has been sent!`);
       });
     }
+
   },
   { once: true }
 );
